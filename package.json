@@ -1,0 +1,29 @@
+{
+  "name": "munch-server",
+  "version": "1.0.0",
+  "description": "munch-server",
+  "scripts": {
+    "start": "NODE_PATH=src/ node src/index.js",
+    "test": "NODE_ENV=TEST jest",
+    "dev": "nodemon",
+    "lint": "eslint --ext .js --config ./.eslintrc.js ./src ./test",
+    "lint:fix": "npm run lint -- --fix",
+    "nuke": "git clean -dfX"
+  },
+  "jest": {
+    "modulePaths": [
+      "src"
+    ]
+  },
+  "dependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.0"
+  }
+}
