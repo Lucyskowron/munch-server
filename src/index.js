@@ -4,30 +4,66 @@ const { ApolloServer, gql } = require('apollo-server');
 // that together define the "shape" of queries that are executed against
 // your data.
 const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
+  type Query {
+    pandas: [Panda]!
   }
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
+  type Panda {
+    id: ID!
+    name: String!
+    favouriteFood: String!
+    favouriteNonBambooFood: String!
+    favouriteShows: [TvShow]!
+  }
+
+  type TvShow {
+    title: String!
+    numberOfEpisodes: Int!
   }
 `;
 
-const books = [
+const pandas = [
   {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
+    name: 'Flumpy',
+    favouriteFood: 'bamboo',
+    favouriteNonBambooFood: 'apples',
+    favouriteShows: ['3'],
   },
   {
-    title: 'City of Glass',
-    author: 'Paul Auster',
+    name: 'Angelica',
+    favouriteFood: 'bamboo',
+    favouriteNonBambooFood: 'chocolate drops',
+    favouriteShows: ['2'],
+  },
+  {
+    name: 'Chocky',
+    favouriteFood: 'bamboo',
+    favouriteNonBambooFood: 'dumplings',
+    favouriteShows: ['1', '2'],
+  },
+  {
+    name: 'Bertrum',
+    favouriteFood: 'bamboo',
+    favouriteNonBambooFood: 'A Spanish omelette',
+    favouriteShows: ['1'],
+  },
+];
+
+const tvShows = [
+  {
+    id: '1',
+    title: 'Star Wars',
+    numberOfEpisodes: 10,
+  },
+  {
+    id: '2',
+    title: 'Buffy the Vampire Slayer',
+    numberOfEpisodes: 101,
+  },
+  {
+    id: '3',
+    title: 'Portrait Artist of the Year',
+    numberOfEpisodes: 35,
   },
 ];
 
@@ -35,7 +71,19 @@ const books = [
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
   Query: {
-    books: () => books,
+    pandas: (_, args) => {
+      return pandas;
+    },
+  },
+  Panda: {
+    id: () => {
+      return '123';
+    },
+    favouriteShows: (parent) => {
+      return tvShows.filter((tvShow) =>
+        parent.favouriteShows.includes(tvShow.id),
+      );
+    },
   },
 };
 
