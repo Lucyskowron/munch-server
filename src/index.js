@@ -11,6 +11,7 @@ const typeDefs = gql`
   type Panda {
     id: ID!
     name: String!
+    "this is usually bamboo"
     favouriteFood: String!
     favouriteNonBambooFood: String!
     favouriteShows: [TvShow]!
@@ -20,28 +21,43 @@ const typeDefs = gql`
     title: String!
     numberOfEpisodes: Int!
   }
+
+  type Mutation {
+    addPanda(input: InputAddPanda!): Panda
+  }
+
+  input InputAddPanda {
+    id: ID!
+    name: String!
+    favouriteFood: String!
+    favouriteNonBambooFood: String!
+  }
 `;
 
 const pandas = [
   {
+    id: '1',
     name: 'Flumpy',
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'apples',
     favouriteShows: ['3'],
   },
   {
+    id: '2',
     name: 'Angelica',
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'chocolate drops',
     favouriteShows: ['2'],
   },
   {
+    id: '3',
     name: 'Chocky',
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'dumplings',
     favouriteShows: ['1', '2'],
   },
   {
+    id: '4',
     name: 'Bertrum',
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'A Spanish omelette',
@@ -76,13 +92,23 @@ const resolvers = {
     },
   },
   Panda: {
-    id: () => {
-      return '123';
-    },
     favouriteShows: (parent) => {
       return tvShows.filter((tvShow) =>
         parent.favouriteShows.includes(tvShow.id),
       );
+    },
+  },
+  Mutation: {
+    addPanda: (_, { input }) => {
+      const panda = {
+        id: input.id,
+        name: input.name,
+        favouriteFood: input.favouriteFood,
+        favouriteNonBambooFood: input.favouriteNonBambooFood,
+        favouriteShows: input.favouriteShows || [],
+      };
+      pandas.push(panda);
+      return panda;
     },
   },
 };
