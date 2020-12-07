@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "munch-server",
   "scripts": {
-    "start": "NODE_PATH=src/ node src/index.js",
+    "start": "NODE_PATH=src/ node src/server.js",
     "test": "NODE_ENV=TEST jest",
     "dev": "nodemon",
     "lint": "eslint --ext .js --config ./.eslintrc.js ./src ./test",
