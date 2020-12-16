@@ -4,7 +4,9 @@ const data = require('../db');
 const resolver = {
   Food: {
     typeOfFood: (parent) => {
-      return parent.typeOfFood.map();
+      // return data.food.filter((food) => parent.includes(food.id));
+      const eatenFood = data.food.find((food) => food.id === parent);
+      return eatenFood.typeOfFood;
     },
   },
 };

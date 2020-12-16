@@ -1,9 +1,12 @@
 const { gql } = require('apollo-server');
 
 const typeDef = gql`
-  type Food {
+  type BlogPost {
     id: Int!
-    typeOfFood: String!
+    date: String!
+    author: Panda!
+    title: String!
+    body: String!
   }
 `;
 

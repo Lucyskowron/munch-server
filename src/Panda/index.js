@@ -8,6 +8,12 @@ const resolver = {
         parent.favouriteShows.includes(tvShow.id),
       );
     },
+    blogPosts: (parent) => {
+      const theBlogs = data.blogPosts.filter((post) =>
+        parent.blogPosts.includes(post.id),
+      );
+      return theBlogs;
+    },
   },
 };
 

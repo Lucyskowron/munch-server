@@ -5,6 +5,7 @@ const Mutation = require('./Mutation');
 const PandaFriend = require('./PandaFriend');
 const TvShow = require('./TvShow');
 const Food = require('./Food');
+const BlogPost = require('./BlogPost');
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
@@ -16,6 +17,7 @@ const server = new ApolloServer({
     PandaFriend.typeDef,
     TvShow.typeDef,
     Food.typeDef,
+    BlogPost.typeDef,
   ],
   resolvers: {
     ...Query.resolver,

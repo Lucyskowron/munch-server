@@ -9,6 +9,7 @@ const typeDef = gql`
     favouriteNonBambooFood: String!
     favouriteShows: [TvShow]!
     foodConsumed: [Food]!
+    blogPosts: [BlogPost]!
   }
 `;
 

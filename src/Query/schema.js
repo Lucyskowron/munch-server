@@ -4,6 +4,7 @@ const typeDef = gql`
   type Query {
     pandas: [Panda]!
     pandaFriends: [PandaFriend]!
+    blogPosts: [BlogPost]!
   }
 `;
 

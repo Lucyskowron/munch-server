@@ -5,6 +5,8 @@ const pandas = [
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'apples',
     favouriteShows: ['3'],
+    foodConsumed: ['1'],
+    blogPosts: ['1'],
   },
   {
     id: '2',
@@ -12,6 +14,8 @@ const pandas = [
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'chocolate drops',
     favouriteShows: ['2'],
+    foodConsumed: ['1', '2'],
+    blogPosts: [],
   },
   {
     id: '3',
@@ -19,6 +23,8 @@ const pandas = [
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'dumplings',
     favouriteShows: ['1', '2'],
+    foodConsumed: ['1', '3'],
+    blogPosts: [],
   },
   {
     id: '4',
@@ -26,6 +32,8 @@ const pandas = [
     favouriteFood: 'bamboo',
     favouriteNonBambooFood: 'A Spanish omelette',
     favouriteShows: ['1'],
+    foodConsumed: ['1'],
+    blogPosts: ['2'],
   },
 ];
 
@@ -57,26 +65,50 @@ const pandaFriends = [
 
 const food = [
   {
+    id: '1',
     typeOfFood: 'bamboo',
   },
   {
+    id: '2',
     typeOfFood: 'chocolate drops',
   },
   {
+    id: '3',
     typeOfFood: 'apple',
   },
   {
+    id: '4',
     typeOfFood: 'sausages',
   },
   {
+    id: '5',
     typeOfFood: 'daisies',
   },
   {
+    id: '6',
     typeOfFood: 'leaves',
   },
   {
+    id: '7',
     typeOfFood: 'nettles',
   },
 ];
 
-module.exports = { pandas, tvShows, pandaFriends, food };
+const blogPosts = [
+  {
+    id: '1',
+    date: '11/12/2020',
+    author: '1',
+    title: 'My first blog',
+    body: 'Hello, Flumpy here. This is my first blog',
+  },
+  {
+    id: '2',
+    date: '11/12/2020',
+    author: '4',
+    title: 'Introduction',
+    body: 'Hola! Me llamo Bertrum',
+  },
+];
+
+module.exports = { pandas, tvShows, pandaFriends, food, blogPosts };
